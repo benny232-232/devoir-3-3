@@ -6,11 +6,10 @@ const codes = {
   "SVT": { code: "CELLULE", page: "svt.html" },
   "Physique-Chimie": { code: "ATOMES", page: "physique.html" },
   "Anglais": { code: "SHAKESPEARE", page: "anglais.html" },
-  "Espagnol": { code: "HOLA", page: "espagnol.html" },
+  "Allemand": { code: "HALLO", page: "allemand.html" },
   "Technologie": { code: "ROBOT", page: "technologie.html" },
   "Arts plastiques": { code: "PICASSO", page: "arts.html" },
   "Musique": { code: "BACH", page: "musique.html" },
-  "EPS": { code: "SPORT", page: "eps.html" }
 };
 
 const container = document.getElementById("matieres");
