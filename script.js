@@ -1,21 +1,21 @@
-// Liste des matières avec leur code secret
+// Matières avec leur code secret et leur page associée
 const codes = {
-  "Maths": "PYTHAGORE",
-  "Français": "MOLIERE",
-  "Histoire": "REVOLUTION",
-  "SVT": "CELLULE",
-  "Physique-Chimie": "ATOMES",
-  "Anglais": "SHAKESPEARE",
-  "Espagnol": "HOLA",
-  "Technologie": "ROBOT",
-  "Arts plastiques": "PICASSO",
-  "Musique": "BACH",
-  "EPS": "SPORT"
+  "Maths": { code: "P", page: "maths.html" },
+  "Français": { code: "MOLIERE", page: "francais.html" },
+  "Histoire": { code: "REVOLUTION", page: "histoire.html" },
+  "SVT": { code: "CELLULE", page: "svt.html" },
+  "Physique-Chimie": { code: "ATOMES", page: "physique.html" },
+  "Anglais": { code: "SHAKESPEARE", page: "anglais.html" },
+  "Espagnol": { code: "HOLA", page: "espagnol.html" },
+  "Technologie": { code: "ROBOT", page: "technologie.html" },
+  "Arts plastiques": { code: "PICASSO", page: "arts.html" },
+  "Musique": { code: "BACH", page: "musique.html" },
+  "EPS": { code: "SPORT", page: "eps.html" }
 };
 
 const container = document.getElementById("matieres");
 
-// Génère automatiquement un bloc par matière
+// Génère un bloc par matière
 Object.keys(codes).forEach(matiere => {
   const div = document.createElement("div");
   div.className = "matiere";
@@ -24,27 +24,25 @@ Object.keys(codes).forEach(matiere => {
     <label for="input-${matiere}">${matiere}</label>
     <input id="input-${matiere}" type="text" placeholder="Entrer le code pour ${matiere}" />
     <button id="btn-${matiere}" disabled>Valider ${matiere}</button>
-    <div id="result-${matiere}" class="result">🎉 Code correct pour ${matiere} !</div>
   `;
 
   container.appendChild(div);
 
   const input = div.querySelector(`#input-${matiere}`);
   const button = div.querySelector(`#btn-${matiere}`);
-  const result = div.querySelector(`#result-${matiere}`);
 
-  // Vérifie le code à chaque frappe
+  // Vérifie le code
   input.addEventListener("input", () => {
     const val = input.value.trim();
-    const correct = val.toUpperCase() === codes[matiere].toUpperCase();
+    const correct = val.toUpperCase() === codes[matiere].code.toUpperCase();
 
     button.disabled = !correct;
     button.classList.toggle("enabled", correct);
   });
 
-  // Action du bouton
+  // Action du bouton : redirection vers la page associée
   button.addEventListener("click", () => {
-    result.style.display = "block";
-    result.scrollIntoView({ behavior: "smooth", block: "center" });
+    window.location.href = codes[matiere].page;
   });
 });
+
